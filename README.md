@@ -2,7 +2,11 @@
 
 This module unlocks vGPU functionality on your consumer nvidia card.
 
+
 This module is for host machines, it installs a merged driver, meaning the host can use the GPU at the same time as guests.
+
+> [!NOTE]
+> For guest drivers support take a look at [mrzenc's rewrite of this module](https://github.com/mrzenc/nvidia-vgpu-nixos) where efforts are currently focused on.
 
 > [!WARNING]  
 > Under development, not usable. `mdevctl types` displays nothing
