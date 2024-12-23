@@ -33,7 +33,7 @@
 > hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.vgpu_16_5; # vgpu_17_3 vgpu_16_5
 > 
 > hardware.nvidia.vgpu.patcher.enable = true;
-> # hardware.nvidia.vgpu.patcher.options.remapP40ProfilesToV100D = true; # for 17_x
+> # hardware.nvidia.vgpu.patcher.options.remapP40ProfilesToV100D = true; # for 17_x for Pascal Cards
 > # hardware.nvidia.vgpu.patcher.options.doNotForceGPLLicense = true;
 > 
 > hardware.nvidia.vgpu.driverSource.name = "NVIDIA-GRID-Linux-KVM-535.161.05-535.161.08-538.46.zip"; # 16_5
