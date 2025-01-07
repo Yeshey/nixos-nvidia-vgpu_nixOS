@@ -320,39 +320,6 @@ In the case of the merged driver you'll have to get the vgpu driver and the norm
 
 ## To-Do
 
-- Review the module's options, new possible config:
-```nix
-hardware.nvidia = {
-    package = inputs.nixos-nvidia-vgpu.grid_16_2; # example
-    vgpu = { # only available when package set to grid_x_y, will throw error otherwise
-        patcher = {
-            enable = true; # will disable patching and install original drivers directly
-            options = {
-                makeMergedDriver = false;
-                doNotForceGPLLicense = false; # disables nvidia GPL workaround which is applied by default if kernel > 5.15
-                doNotPatchNvidiaOpen = true; # will not apply --nvoss flag, rebuild will fail if open=true
-                remapP40ProfilesToV100D = false; # applies --remap-p2v flag
-                extraOptions = "--test-dmabuf-export"; # example
-            };
-            copyVGPUProfiles = {
-                # example
-                "1122:3344" = "5566:7788";
-            };
-        };
-        driverSource = { # patcher will be disabled if it downloads .run file
-            name = "NVIDIA-something.zip"; # if your .run file (or .zip) has different name
-            
-            # if both url and sha256 not set - require nvidia vgpu .zip file (we already know sha256 of that archive)
-            # if only sha256 set - require local (supposedly prepatched) .run file
-            # if only url set - download .zip from url
-            # if both url and sha256 set - download .run from url (supposedly prepatched but can be original one - module will not patch it)
-            url = "https://some-url-lul.com";
-            sha256 = "somehash";
-        };
-    };
-    open = true; # REQUIRES doNotPatchNvidiaOpen to be set to FALSE! Otherwise it will fail
-};
-```
 - ~~Add mechanism to add more cards through vcfgclone~~ (Added by [mrzenc](https://github.com/mrzenc), thanks!)
 
 ---
